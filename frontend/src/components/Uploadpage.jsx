@@ -3,7 +3,7 @@ import { ReactMediaRecorder } from "react-media-recorder";
 import { useState } from 'react';
 import axios from 'axios';
 import inputfileLogo from '../assets/inputfile.svg';
-import 'chart.js/auto';
+import { Chart } from 'chart.js';  // Changed import
 import { convertToWav } from '../utils/audioUtils';
 
 function UploadPage() {
@@ -129,7 +129,36 @@ function UploadPage() {
       </button>
       {prediction && (
         <div className="prediction-result">
-          <h3>Predicted Emotion: {prediction.emotion.toUpperCase()}</h3>
+          <h3>
+            Predicted Emotion: {prediction.emotion.toUpperCase()} 
+            {prediction.probabilities && ` (${prediction.probabilities[prediction.emotion].toFixed(2)}%)`}
+          </h3>
+
+          {/* Add probabilities table */}
+          <div className="probabilities-table">
+            <h4>All Emotion Probabilities</h4>
+            <table>
+              <thead>
+                <tr>
+                  <th>Emotion</th>
+                  <th>Probability</th>
+                </tr>
+              </thead>
+              <tbody>
+                {prediction.probabilities && 
+                  Object.entries(prediction.probabilities)
+                    .sort(([, a], [, b]) => b - a) // Sort by probability in descending order
+                    .map(([emotion, probability]) => (
+                      <tr key={emotion} className={emotion === prediction.emotion ? 'predicted-emotion' : ''}>
+                        <td>{emotion.toUpperCase()}</td>
+                        <td>{probability.toFixed(2)}%</td>
+                      </tr>
+                    ))
+                }
+              </tbody>
+            </table>
+          </div>
+
           <div className="plots-container">
             {melSpectrogramBase64 && (
               <div className="plot-item">

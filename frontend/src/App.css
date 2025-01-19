@@ -195,8 +195,20 @@ font-family: Rooster;
   background-color: #0056b3;
 }
 
+/* Base styles for preview and audio */
 .preview {
   margin-top: 20px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.preview audio {
+  height: 75px !important;
+  width: 300px;
 }
 
 .recording {
@@ -206,15 +218,15 @@ font-family: Rooster;
 @keyframes pulse {
   0% {
     transform: scale(1);
-    background-color: #c74664;
+    background-color: #ff003c;
   }
   50% {
     transform: scale(1.1);
-    background-color: #d42b6c;
+    background-color: #ff0062;
   }
   100% {
     transform: scale(1);
-    background-color: #e41d63;
+    background-color: #ff0059;
   }
 }
 
@@ -386,3 +398,156 @@ font-family: Rooster;
   }
 }
 
+@media screen and (min-width: 1400px) {
+  .homepage {
+    padding: 2rem 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .left-section {
+    padding-right: 4rem;
+  }
+
+  .main-headline {
+    font-size: 4rem;
+    line-height: 1.2;
+  }
+
+  .description {
+    font-size: 1.25rem;
+    max-width: 800px;
+  }
+
+  .upload-page {
+    max-width: 1400px;
+    padding: 2rem;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .plots-container {
+    max-width: 1400px;
+    gap: 3rem;
+  }
+
+  .plot-item {
+    max-width: 650px;
+  }
+
+  .mel-spectrogram img {
+    max-width: 120%;
+    max-height: 400px;
+  }
+
+  .emotion-chart img {
+    max-width: 80%;
+    max-height: 400px;
+  }
+
+  .upload-zone {
+    min-width: 40vw;
+    margin: 2rem auto;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-width: medium;
+  }
+   
+
+  p{
+    font-size: 1.7rem;
+  }
+  .record-button,
+  .stop-button,
+  .predict-button {
+    padding: 2rem 3rem;
+    font-size: 2rem;
+    min-width: 200px;
+    margin: 1rem;
+    border-radius: 1rem;
+  }
+
+  .prediction-result {
+    width: 100%;
+    max-width: 1400px;
+    margin-top: 3rem;
+  }
+
+  .prediction-result h3 {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .prediction-result h4 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  audio {
+    min-width: 15vw ;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+  }
+
+  .preview {
+    min-height: 200px;
+    margin: 2rem 0;
+    padding: 3rem;
+  }
+
+  .preview audio {
+    height: 100px !important;
+    min-width: 500px;
+    margin: 1.5rem 0;
+    padding: 1.5rem;
+  }
+
+  .probabilities-table {
+    max-width: 700px;
+    margin: 3rem auto;
+  }
+
+  .probabilities-table th,
+  .probabilities-table td {
+    padding: 1rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Base styles for probabilities table */
+.probabilities-table {
+  margin: 2rem auto;
+  max-width: 500px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.probabilities-table table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.probabilities-table th,
+.probabilities-table td {
+  padding: 0.8rem;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.probabilities-table th {
+  background-color: #f8f9fa;
+  color: #333;
+  font-weight: 600;
+}
+
+.predicted-emotion {
+  background-color: rgba(0, 123, 255, 0.1);
+  font-weight: 600;
+}
